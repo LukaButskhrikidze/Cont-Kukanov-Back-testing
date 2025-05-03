@@ -4,8 +4,8 @@ import json
 
 ORDER_SIZE = 5000
 STEP = 100
-FEE = 0.0002    # Since we don't have specified fee or rebate 
-REBATE = 0.0001
+FEE = 0.003  # Since we don't have specified fee or rebate, using ones in paper
+REBATE = 0.002
 filepath = 'l1_day.csv'
 
 # Load and clean data using publisher_id as venue key
@@ -125,7 +125,7 @@ def vwap_strategy(snapshots):
 
 def main():
     snapshots = load_snapshots("l1_day.csv")
-    param_grid = np.round(np.arange(0, 0.00011, 0.00001), 7)
+    param_grid = np.round(np.arange(0.0001, 0.001, 0.0001), 7)
     best_result = {'cost': np.inf}
 
     for lo in param_grid:
@@ -179,3 +179,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
